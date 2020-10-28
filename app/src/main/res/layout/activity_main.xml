@@ -29,4 +29,30 @@
         android:text="@string/button_send"
         app:layout_constraintBaseline_toBaselineOf="@+id/editText"
         app:layout_constraintStart_toEndOf="@+id/editText" />
+
+
+    <Button
+        android:id="@+id/btnJoin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="142dp"
+        android:onClick="onClickJoinRoom"
+        android:text="@string/join_room"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:onClick="onClickCreateRoom"
+        android:text="@string/create_room"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

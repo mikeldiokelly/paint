@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoadActivity">
+
+
+    <TextView
+        android:id="@+id/seekRoomSizeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="324dp"
+        android:layout_marginRight="324dp"
+        android:text="@string/setRoomSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekRoomSizeBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="201dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:max="5"
+        android:min="1"
+        android:progress="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/seekRoomSizeResult"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="400dp"
+        android:layout_marginRight="400dp"
+        android:text="@string/NOP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/seekGameLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="356dp"
+        android:layout_marginRight="356dp"
+        android:text="@string/setLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekGameLevelBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="238dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:max="8"
+        android:progress="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/seekGameLevelResult"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="400dp"
+        android:layout_marginRight="400dp"
+        android:text="@string/NOP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:onClick="onClickGo"
+        android:text="@string/createBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
