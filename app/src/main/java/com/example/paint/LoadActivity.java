@@ -9,7 +9,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
 public class LoadActivity extends AppCompatActivity {
+    private Socket socket;
+    private DataOutputStream dos = null;
+    private DataInputStream dis = null;
+    ApplicationUtil appUtil =  (ApplicationUtil) this.getApplication();
 
     private int roomSize=3;
     private int gameLevel =3;
@@ -80,6 +89,22 @@ public class LoadActivity extends AppCompatActivity {
             //          2. Initialize room
             //          3. Set host
 
+            try {
+                dos = appUtil.getDos();
+                dis = appUtil.getDis();
+                dos.writeUTF("command=");
+                dos.writeInt(Command.START);
+                dos.writeUTF("Room Size=");
+                dos.writeInt(roomSize);
+                dos.writeUTF("Game Level=");
+                dos.writeInt(gameLevel);
+                dos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //todo: handle received message
 
             Intent intent = new Intent(this, GameActivity.class);
             Bundle b=new Bundle();
