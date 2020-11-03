@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">paint</string>
-    <string name="edit_message">Enter a message</string>
+    <string name="edit_message">Insert name</string>
     <string name="button_send">Send</string>
 
     <string name="join_room">Join a random room</string>

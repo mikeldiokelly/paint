@@ -42,15 +42,6 @@ public class MainActivity extends Activity {
         // todo: start receiving thread
     }
 
-    public static final String EXTRA_MESSAGE = "Test";
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
     public void onClickJoinRoom(View v) {
         int viewId = v.getId();
         if(viewId == R.id.btnJoin){
