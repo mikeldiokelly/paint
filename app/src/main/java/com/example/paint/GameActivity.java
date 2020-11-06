@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.content.Intent;
 
@@ -22,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
             for (int j = 0; j < 8; j++) {
                 String buttonID = "button_" + i + j;
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+                int temp = resID;
                 //buttons[i][j] = findViewById(resID);
                 //buttons[i][j].setOnClickListener(this::onClick);
             }
@@ -40,6 +42,16 @@ public class GameActivity extends AppCompatActivity {
         if(viewId == R.id.reset){
             resetarray();
         }
+    }
+
+    public void onClickGOO(View v) {
+        int viewId = v.getId();
+        if(viewId == R.id.imgBtn70||viewId == R.id.imgBtn71||viewId == R.id.imgBtn72||viewId == R.id.imgBtn73) {
+            ImageButton btn = (ImageButton) findViewById(viewId);
+            btn.setImageResource(R.drawable.splash3green);
+
+        }
+
     }
 
     private  void resetarray(){
