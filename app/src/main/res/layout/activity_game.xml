@@ -41,121 +41,71 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_00"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+<!--                android:layout_width="match_parent"
+        android:layout_height="0dp"-->
 
-        <Button
-            android:id="@+id/button_01"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_00"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_02"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_03"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_04"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_01"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_05"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_06"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_02"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_07"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/button_10"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_03"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_11"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_04"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_12"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_05"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_13"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_06"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_14"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_07"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_15"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_16"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_17"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
     </LinearLayout>
 
@@ -164,120 +114,69 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_20"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_21"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_10"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_22"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_23"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_24"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_11"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_25"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_26"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_12"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_27"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_30"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_13"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_31"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_14"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_32"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_15"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_33"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_16"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_34"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_17"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_35"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/button_36"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_37"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -285,121 +184,137 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_40"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_41"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_20"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_42"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_43"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_44"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_21"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_45"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_46"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_22"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_47"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
+
+        <ImageButton
+            android:id="@+id/imgBtn_23"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_24"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_25"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_26"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_27"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_50"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_30"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_51"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_52"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_31"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_53"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_54"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_55"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_32"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_56"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_57"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
+        <ImageButton
+            android:id="@+id/imgBtn_33"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_34"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_35"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_36"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_37"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
     </LinearLayout>
 
@@ -408,59 +323,212 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_60"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_61"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_40"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_62"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_63"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_64"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_41"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
-        <Button
-            android:id="@+id/button_65"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
 
-        <Button
-            android:id="@+id/button_66"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/imgBtn_42"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
-        <Button
-            android:id="@+id/button_67"
-            android:layout_width="0dp"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_43"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="60sp" />
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_44"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_45"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_46"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_47"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_50"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_51"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_52"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_53"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_54"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_55"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_56"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_57"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_60"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_61"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_62"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_63"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_64"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn65"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_66"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_67"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
     </LinearLayout>
 
@@ -484,38 +552,69 @@
         <!--            android:textSize="60sp" />-->
 
 
+
         <ImageButton
-            android:id="@+id/imgBtn70"
-            android:layout_width="wrap_content"
+            android:id="@+id/imgBtn_70"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
             android:background="#0000"
             android:onClick="onClickGOO"
-            android:src="@drawable/splash2lightblue"></ImageButton>
+            android:src="@drawable/white" />
 
 
         <ImageButton
-            android:id="@+id/imgBtn71"
-            android:layout_width="wrap_content"
+            android:id="@+id/imgBtn_71"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
             android:background="#0000"
             android:onClick="onClickGOO"
-            android:src="@drawable/splash2lightblue"></ImageButton>
+            android:src="@drawable/white" />
+
 
         <ImageButton
-            android:id="@+id/imgBtn72"
-            android:layout_width="wrap_content"
+            android:id="@+id/imgBtn_72"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
             android:background="#0000"
             android:onClick="onClickGOO"
-            android:src="@drawable/splash2lightblue"></ImageButton>
+            android:src="@drawable/white" />
+
 
         <ImageButton
-            android:id="@+id/imgBtn73"
-            android:layout_width="wrap_content"
+            android:id="@+id/imgBtn_73"
+            android:layout_width="51dp"
             android:layout_height="match_parent"
             android:background="#0000"
             android:onClick="onClickGOO"
-            android:src="@drawable/splash2lightblue"></ImageButton>
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_74"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_75"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_76"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_77"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
 
     </LinearLayout>
 
