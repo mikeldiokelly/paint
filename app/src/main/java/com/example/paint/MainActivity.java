@@ -1,19 +1,11 @@
 package com.example.paint;
-import com.example.paint.Command;
-import com.example.paint.ApplicationUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 
 
@@ -28,17 +20,17 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            appUtil.init();
-            socket = appUtil.getSocket();
-            dos = appUtil.getDos();
-            dis = appUtil.getDis();
-            appUtil.setMsg(Command.LOGIN);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            appUtil.init();
+//            socket = appUtil.getSocket();
+//            dos = appUtil.getDos();
+//            dis = appUtil.getDis();
+//            appUtil.setMsg(Command.LOGIN);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         // todo: start receiving thread
     }
 
@@ -46,20 +38,18 @@ public class MainActivity extends Activity {
         int viewId = v.getId();
         if(viewId == R.id.btnJoin){
             if(joinRoom()){
-                Intent intent = new Intent(this, GameActivity.class);
+                Intent intent = new Intent(this, AltergameActivity.class);
                 startActivity(intent);
             }
         }
     }
 
     private void findRoom() {
-        appUtil.setMsg(Command.FINDROOM);
-        // todo: receive existing rooms
+        // todo:
     }
 
     private boolean joinRoom() {
-        appUtil.setMsg(Command.JOINRANDOM);
-        // todo: server return succeed or not
+        // todo:
         return true;
     }
 
@@ -72,7 +62,7 @@ public class MainActivity extends Activity {
     }
 
     private void createRoom() {
-        Intent intent = new Intent(this, LoadActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
 
