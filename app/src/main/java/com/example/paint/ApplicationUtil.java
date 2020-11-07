@@ -3,31 +3,43 @@ import android.app.Application;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.Socket;
 
 public class ApplicationUtil extends Application {
 
-    public static final String ADDRESS = "237.0.0.1";
-    public static final int PORT = 8080;
+    public static final String ADDRESS = "127.0.0.1";
+    public static final int PORT = 8888;
 
     private Socket socket;
     private DataOutputStream dos = null;
     private DataInputStream dis = null;
 
     public void init() throws IOException, Exception {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //Build Connection to the Server
-                try {
-                    socket = new Socket(ADDRESS, PORT);
-                    dos = new DataOutputStream(socket.getOutputStream());
-                    dis = new DataInputStream(socket.getInputStream());
-                } catch (Exception e) {
-                    e.printStackTrace();
+        Runnable sendss = new Runnable(){
+            //@Override
+            public void run() { try {
+                int msgNumber = 10000;
+                socket = new Socket(ADDRESS, PORT);
+                new ReceiveThread(socket).start();
+                OutputStream outStream = socket.getOutputStream();
+                for (int i = 0; i < msgNumber; i++) {
+                    String sendMsg = "{" + "','time':'" + (i + 1)
+                            + "','positionX':'" + ((i * 100003) % 1000)
+                            + "','positionY':'" + ((i * 100003) % 800)
+                            + "'}";
+                    outStream.write(sendMsg.getBytes());
+                    System.out.println("Send to server："+sendMsg);
+                    Thread.sleep(10000);
                 }
+                socket.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        }).start();
+            }
+        };
+        Thread thread = new Thread(sendss);
+        thread.start();
 
 
     }

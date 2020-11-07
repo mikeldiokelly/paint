@@ -6,6 +6,7 @@ import android.view.View;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 
@@ -13,24 +14,24 @@ public class MainActivity extends Activity {
     private Socket socket;
     private DataOutputStream dos = null;
     private DataInputStream dis = null;
-    ApplicationUtil appUtil =  (ApplicationUtil) this.getApplication();
+    ApplicationUtil appUtil =  null;//(ApplicationUtil) this.getApplication();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        try {
-//            appUtil.init();
-//            socket = appUtil.getSocket();
+        appUtil =  (ApplicationUtil) this.getApplication();
+        try {
+            appUtil.init();
+            socket = appUtil.getSocket();
 //            dos = appUtil.getDos();
 //            dis = appUtil.getDis();
 //            appUtil.setMsg(Command.LOGIN);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // todo: start receiving thread
     }
 
