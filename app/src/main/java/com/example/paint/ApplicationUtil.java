@@ -1,9 +1,12 @@
 package com.example.paint;
+
 import android.app.Application;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class ApplicationUtil extends Application {
@@ -16,30 +19,28 @@ public class ApplicationUtil extends Application {
     private DataInputStream dis = null;
 
     public void init() throws IOException, Exception {
-        Runnable sendss = new Runnable(){
-            //@Override
-            public void run() { try {
-                int msgNumber = 10000;
-                socket = new Socket(ADDRESS, PORT);
-                new ReceiveThread(socket).start();
-                OutputStream outStream = socket.getOutputStream();
-                for (int i = 0; i < msgNumber; i++) {
-                    String sendMsg = "{" + "','time':'" + (i + 1)
-                            + "','positionX':'" + ((i * 100003) % 1000)
-                            + "','positionY':'" + ((i * 100003) % 800)
-                            + "'}";
-                    outStream.write(sendMsg.getBytes());
-                    System.out.println("Send to server："+sendMsg);
-                    Thread.sleep(10000);
-                }
-                socket.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+
+        try {
+            int msgNumber = 10000;
+            //socket = new Socket(ADDRESS, PORT);
+            socket = new Socket();
+            InetSocketAddress socketAddress = new InetSocketAddress(ADDRESS, PORT);
+            socket.connect(socketAddress);
+            new ReceiveThread(socket).start();
+            OutputStream outStream = socket.getOutputStream();
+            for (int i = 0; i < msgNumber; i++) {
+                String sendMsg = "{" + "','time':'" + (i + 1)
+                        + "','positionX':'" + ((i * 100003) % 1000)
+                        + "','positionY':'" + ((i * 100003) % 800)
+                        + "'}";
+                outStream.write(sendMsg.getBytes());
+                System.out.println("Send to server：" + sendMsg);
+                Thread.sleep(10000);
             }
-            }
-        };
-        Thread thread = new Thread(sendss);
-        thread.start();
+            socket.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
 
     }
@@ -69,7 +70,7 @@ public class ApplicationUtil extends Application {
     }
 
 
-    public void setMsg(int command){
+    public void setMsg(int command) {
         try {
             dos.writeUTF("?command=");
             dos.writeInt(command);
@@ -81,9 +82,6 @@ public class ApplicationUtil extends Application {
             e.printStackTrace();
         }
     }
-
-
-
 
 
 }
