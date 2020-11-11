@@ -106,7 +106,6 @@
             android:background="#0000"
             android:onClick="onClickGOO"
             android:src="@drawable/white" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -458,7 +457,6 @@
             android:onClick="onClickGOO"
             android:src="@drawable/white" />
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -509,7 +507,7 @@
             android:onClick="onClickGOO"
             android:src="@drawable/white" />
         <ImageButton
-            android:id="@+id/imgBtn65"
+            android:id="@+id/imgBtn_65"
             android:layout_width="51dp"
             android:layout_height="match_parent"
             android:background="#0000"
@@ -616,23 +614,153 @@
             android:onClick="onClickGOO"
             android:src="@drawable/white" />
 
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_80"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_81"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_82"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_83"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_84"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_85"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_86"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_87"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_90"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_91"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_92"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
+        <ImageButton
+            android:id="@+id/imgBtn_93"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_94"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_95"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_96"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+        <ImageButton
+            android:id="@+id/imgBtn_97"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="onClickGOO"
+            android:src="@drawable/white" />
+
+
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp">
-
-        <TextView
-            android:id="@+id/empty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="100dp"
-            android:textSize="30sp"
-            android:textColor="#000000"
-            android:text="SWIPE BUTTON"
-            android:layout_alignParentLeft="true" />
 
     </RelativeLayout>
 
