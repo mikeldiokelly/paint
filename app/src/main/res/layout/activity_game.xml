@@ -762,6 +762,32 @@
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
+        <TextView
+            android:id="@+id/reloading_fire"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_above="@+id/reload_timer"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="Fire" />
+
+        <TextView
+            android:id="@+id/reload_timer"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:textSize="20sp" />
     </RelativeLayout>
 
 

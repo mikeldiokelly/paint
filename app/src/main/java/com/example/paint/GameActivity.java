@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,6 +18,8 @@ public class GameActivity extends AppCompatActivity {
 
     private ImageButton[] buttons = new ImageButton[100];
     private int[] color= new int[100];
+    CountDownTimer cTimer = null;
+    boolean reloading = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +60,19 @@ public class GameActivity extends AppCompatActivity {
     public void onClickGOO(View v) {
         int viewId = v.getId();
        // if(viewId == R.id.imgBtn_70||viewId == R.id.imgBtn_71||viewId == R.id.imgBtn_72||viewId == R.id.imgBtn_73) {
+        if(!reloading) {
             ImageButton btn = (ImageButton) findViewById(viewId);
             btn.setImageResource(R.drawable.splash1black);
+
+            //create timer
+            reloading = true;
+            TextView reloading_fire = (TextView) findViewById(R.id.reloading_fire);
+            reloading_fire.setText("Reloading");
+            startTimer();
+        }
+        else{
+            //wait (maybe make the timer flash or something)
+        }
 
 
 
@@ -98,6 +112,31 @@ public class GameActivity extends AppCompatActivity {
                 a++;
             }
         }
+    }
+
+    void startTimer() {
+
+        cTimer = new CountDownTimer(5000, 500) {
+            public void onTick(long millisUntilFinished) {
+                int remaining_time = Math.round(millisUntilFinished/1000)+1;
+                TextView reload_timer = (TextView) findViewById(R.id.reload_timer);
+                reload_timer.setText(Long.toString(remaining_time)+" sec");
+            }
+            public void onFinish() {
+                TextView reloading_fire = (TextView) findViewById(R.id.reloading_fire);
+                reloading_fire.setText("Fire");
+                TextView reload_timer = (TextView) findViewById(R.id.reload_timer);
+                reload_timer.setText("");
+                reloading = false;
+            }
+        };
+        cTimer.start();
+    }
+
+    //cancel timer needs to be called when page is closed otherwise it will keep counting in the background
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
     }
 }
 
