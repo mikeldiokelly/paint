@@ -26,7 +26,7 @@ public class ApplicationUtil extends Application {
             socket = new Socket();
             InetSocketAddress socketAddress = new InetSocketAddress(ADDRESS, PORT);
             socket.connect(socketAddress);
-            new ReceiveThread(socket).start();
+//            new ReceiveThread(socket).start();
             OutputStream outStream = socket.getOutputStream();
             for (int i = 0; i < msgNumber; i++) {
                 String sendMsg = "{" + "','time':'" + (i + 1)
