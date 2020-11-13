@@ -20,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     private int[] color= new int[100];
     CountDownTimer cTimer = null;
     boolean reloading = false;
+    boolean game_start = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class GameActivity extends AppCompatActivity {
         for (int i=0;i<16;i++){
             board[i] = 0;
         }
+        if (game_start==true) {
+            move_board (start);
+        }
         update_board(start,board);
         Button reset;
         reset=(Button) findViewById(R.id.reset);
@@ -54,6 +58,7 @@ public class GameActivity extends AppCompatActivity {
         int viewId = v.getId();
         if(viewId == R.id.reset){
             resetarray();
+            game_start = true;
         }
     }
 
@@ -76,6 +81,10 @@ public class GameActivity extends AppCompatActivity {
 
 
 
+    }
+
+    void move_board (int [] start) {
+        
     }
 
     private  void resetarray(){
