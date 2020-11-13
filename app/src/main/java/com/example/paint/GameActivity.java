@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +22,9 @@ public class GameActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
     boolean reloading = false;
     boolean game_start = false;
+    int[] current_board_position;
+    int x_direction = 1; //1 = right, 0 = left
+    int y_direction = 1; //1 = down, 0 = up
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +41,24 @@ public class GameActivity extends AppCompatActivity {
         //every T seconds, update the board
         int[] start = new int[2];
         int[] board = new int[16];
-        start [0] = 4;
-        start [1] = 4;
+        start [0] = 1;
+        start [1] = 1;
+        current_board_position = start; // initialize the current board  position
         for (int i=0;i<16;i++){
             board[i] = 0;
         }
-        if (game_start==true) {
-            move_board (start);
-        }
+
         update_board(start,board);
         Button reset;
         reset=(Button) findViewById(R.id.reset);
         reset.setOnClickListener(this::onClick);
         reset.setBackgroundColor(Color.parseColor("red"));
 
+
+        int test_level =1;
+//        if (game_start) {
+        move_board (start, test_level, 4, 3, 8, 10, board);
+//        }
     }
 
 
@@ -83,8 +91,59 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    void move_board (int [] start) {
-        
+    void move_board (int [] start, int level, int board_sizeX, int board_sizeY, int screen_sizeX, int screen_sizeY, int[] board) {
+        double speed = 0.5*level;
+        Handler myHandler = new Handler();
+        int delay = level*1000;
+
+        myHandler.postDelayed(new Runnable() {
+            public void run() {
+                determine_new_board_coordinates(board_sizeX, board_sizeY, screen_sizeX, screen_sizeY);
+                update_board(current_board_position, board);
+                myHandler.postDelayed(this, delay);
+            }
+        }, delay);
+    }
+
+    void determine_new_board_coordinates(int board_sizeX, int board_sizeY, int screen_sizeX, int screen_sizeY) {
+        int space_between;
+
+        if (x_direction == 1) { //check to see if we have hit the right side of the screen
+            space_between = screen_sizeX - (current_board_position[1] + board_sizeX + 1);
+            if(space_between <= 0) {
+                x_direction = 0;
+            }
+        }
+        else { //check to see if we have hit the left side of the screen
+            if(current_board_position[1] == 0){
+                x_direction = 1;
+            }
+        }
+        if (y_direction == 1){ //check to see if we have hit the bottom of the screen
+            space_between = screen_sizeY - (current_board_position[0] + board_sizeY + 1);
+            if(space_between <= 0) {
+                y_direction = 0;
+            }
+        }
+        else{ //check to see if we have hit the top of the screen
+            if(current_board_position[0] == 0){
+                y_direction = 1;
+            }
+        }
+
+        //find new coordinates
+        if(x_direction == 1){
+            current_board_position[1] = current_board_position[1] + 1;
+        }
+        else {
+            current_board_position[1] = current_board_position[1] - 1;
+        }
+        if(y_direction ==1){
+            current_board_position[0] = current_board_position[0] + 1;
+        }
+        else{
+            current_board_position[0] = current_board_position[0] - 1;
+        }
     }
 
     private  void resetarray(){
@@ -124,13 +183,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     void startTimer() {
-
         cTimer = new CountDownTimer(5000, 500) {
             public void onTick(long millisUntilFinished) {
-                int remaining_time = Math.round(millisUntilFinished/1000)+1;
+                int remaining_time = Math.round(millisUntilFinished / 1000) + 1;
                 TextView reload_timer = (TextView) findViewById(R.id.reload_timer);
-                reload_timer.setText(Long.toString(remaining_time)+" sec");
+                reload_timer.setText(Long.toString(remaining_time) + " sec");
             }
+
             public void onFinish() {
                 TextView reloading_fire = (TextView) findViewById(R.id.reloading_fire);
                 reloading_fire.setText("Fire");
