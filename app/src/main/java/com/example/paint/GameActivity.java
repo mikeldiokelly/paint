@@ -20,8 +20,8 @@ public class GameActivity extends AppCompatActivity {
     final private ImageButton[][] buttons = new ImageButton[10][8];
     final private int[][] color= new int[10][8];
     int target_sizeX = 4;
-    int target_sizeY = 3;
-    int [][] target = new int [target_sizeY][target_sizeX];
+    int target_sizeY = 4;
+    final int [] target = new int[target_sizeX*target_sizeY];
     int[] current_board_position;
     CountDownTimer cTimer = null;
     boolean reloading = false;
@@ -43,23 +43,17 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         //initialize the target array
-        for (int i = 0; i < target_sizeY; i++) {
-            for (int j = 0; j < target_sizeX; j++) {
-                target[i][j] = 0;
-            }
+        for (int i = 0; i < target.length; i++) {
+            target[i] = 0;
         }
 
         //every T seconds, update the board
         int[] start = new int[2];
-        int[] board = new int[16];
         start [0] = 1; //y
         start [1] = 2; //x
         current_board_position = start; // initialize the current board  position
-        for (int i=0;i<16;i++){
-            board[i] = 0;
-        }
 
-        update_board(start,board);
+        update_board(start);
         Button reset;
         reset=(Button) findViewById(R.id.reset);
         reset.setOnClickListener(this::onClick);
@@ -68,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
 
         int test_level =1;
 //        if (game_start) { //happens before onClick and then doesn't occur again so never works
-        move_target(start, test_level, target_sizeX, target_sizeY, 8, 10, board);
+        move_target(test_level, target_sizeX, target_sizeY, 8, 10);
 //        }
     }
 
@@ -98,13 +92,14 @@ public class GameActivity extends AppCompatActivity {
             String btn_id = v.getResources().getResourceName(v.getId()); //sample of ID "com.example.paint:id/imgBtn_53"
             String [] split_ID = btn_id.split("_");
             String [] split_digits = split_ID[1].split("(?!^)");
-//            color[Integer.parseInt(split_digits[0])][Integer.parseInt(split_digits[1])] = 2;
+            color[Integer.parseInt(split_digits[0])][Integer.parseInt(split_digits[1])] = 2;
 
             boolean target_hit = hit_target(Integer.parseInt(split_digits[0]), Integer.parseInt(split_digits[1]));
             if(target_hit){ // update the target board
                 int y_co =  Integer.parseInt(split_digits[0]) - current_board_position[0];
                 int x_co =  Integer.parseInt(split_digits[1]) - current_board_position[1];
-                target[y_co][x_co] = 2; //fill in colour variable when we have one
+                target[((y_co*target_sizeY) + x_co)] = 2;
+//                target[y_co][x_co] = 2; //fill in colour variable when we have one
             }
 
         }
@@ -121,13 +116,10 @@ public class GameActivity extends AppCompatActivity {
             else if(!(x >= current_board_position[1] && x < (current_board_position[1] + target_sizeX))){
                 hit = false;
             }
-            else if(target[y][x] != 0){ // space occupied
-                hit = false;
-            }
         return hit;
     }
 
-    void move_target(int [] start, int level, int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY, int[] board) {
+    void move_target(int level, int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
         double speed = 0.5*level;
         Handler myHandler = new Handler();
         int delay = (int)(speed*1000);
@@ -136,7 +128,7 @@ public class GameActivity extends AppCompatActivity {
         myHandler.postDelayed(new Runnable() {
             public void run() {
                 determine_new_target_coordinates(target_sizeX, target_sizeY, screen_sizeX, screen_sizeY);
-                update_board(current_board_position, board);
+                update_board(current_board_position);
                 myHandler.postDelayed(this, delay);
             }
         }, delay);
@@ -207,12 +199,12 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    void update_board(int [] start, int [] board) {
+    void update_board(int [] start) {
         resetarray();
         int a=0;
-        for (int i = start[0]; i < start[0]+4; i++) {
-            for (int j = start[1]; j < start[1]+4; j++) {
-                color[i][j] = board[a];
+        for (int i = start[0]; i < start[0]+target_sizeY; i++) {
+            for (int j = start[1]; j < start[1]+target_sizeX; j++) {
+                color[i][j] = target[a];
                 setboardcolor(i,j);
                 a++;
             }
