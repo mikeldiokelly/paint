@@ -11,38 +11,79 @@ import java.net.Socket;
 
 public class ApplicationUtil extends Application {
 
-    public static final String ADDRESS = "127.0.0.1";
-    public static final int PORT = 8888;
+    public static final String ADDRESS = "176.34.64.145";
+    public static final int PORT = 4000;
 
     private Socket socket;
-    private DataOutputStream dos = null;
-    private DataInputStream dis = null;
+    private DataOutputStream dos;
+    private DataInputStream dis;
 
     public void init() throws IOException, Exception {
 
         try {
             int msgNumber = 10000;
-            //socket = new Socket(ADDRESS, PORT);
-            socket = new Socket();
-            InetSocketAddress socketAddress = new InetSocketAddress(ADDRESS, PORT);
-            socket.connect(socketAddress);
+            //socket = new Socket(ADDRESS, PORT);=
+            socket = new Socket(ADDRESS, PORT);
             new ReceiveThread(socket).start();
-            OutputStream outStream = socket.getOutputStream();
-            for (int i = 0; i < msgNumber; i++) {
-                String sendMsg = "{" + "','time':'" + (i + 1)
-                        + "','positionX':'" + ((i * 100003) % 1000)
-                        + "','positionY':'" + ((i * 100003) % 800)
-                        + "'}";
-                outStream.write(sendMsg.getBytes());
-                System.out.println("Send to server：" + sendMsg);
-                Thread.sleep(10000);
-            }
-            socket.close();
+            dos = new DataOutputStream(socket.getOutputStream());
+            Thread.sleep(200);
+            dos.writeInt(0);                                        // LOGIN here
+            //            for (int i = 0; i < msgNumber; i++) {
+//                String sendMsg = "{" + "','time':'" + (i + 1)
+//                        + "','positionX':'" + ((i * 100003) % 1000)
+//                        + "','positionY':'" + ((i * 100003) % 800)
+//                        + "'}";
+//                outStream.write(sendMsg.getBytes());
+//                System.out.println("Send to server：" + sendMsg);
+//                Thread.sleep(10000);
+//            }
+//            socket.close();
         } catch (Exception ex) {
             ex.printStackTrace();
+            Thread.sleep(5000);
+            init();
+        }
+    }
+
+    public int sendNewNameCommand(String stringArg) {
+        try {
+            dos.writeInt(1);
+            Thread.sleep(200);
+            dos.writeUTF(stringArg);
+            dos.flush();
+        System.out.println("appUtil line 51");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
         }
 
+        System.out.println("appUtil line 57");
+        return 0;
+    }
 
+    public int throwPaintCommand(int x, int y) {
+        try {
+            dos.writeInt(5);
+            dos.writeInt(x);
+            dos.writeInt(y);
+            dos.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+        return 0;
+    }
+
+    public int unaryCommands(int command) {
+        try {
+            dos.writeInt(command);
+            dos.flush();
+            System.out.println("appUtil line 78");
+        } catch (Exception ex) {
+            return -1;
+        }
+        System.out.println("appUtil line 82");
+        return 0;
     }
 
     public Socket getSocket() {
