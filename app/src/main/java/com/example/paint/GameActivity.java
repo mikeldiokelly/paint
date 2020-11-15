@@ -73,14 +73,15 @@ public class GameActivity extends AppCompatActivity {
             resetarray();
             game_start = true;
         }
+        //reset target
+        for(int i=0;i<target.length;i++){
+            target[i] = 0;
+        }
     }
 
     public void onClickGOO(View v) {
         int viewId = v.getId();
-       // if(viewId == R.id.imgBtn_70||viewId == R.id.imgBtn_71||viewId == R.id.imgBtn_72||viewId == R.id.imgBtn_73) {
         if(!reloading) {
-            ImageButton btn = (ImageButton) findViewById(viewId);
-            btn.setImageResource(R.drawable.splash1black);
 
             //create timer and update "Fire" message
             reloading = true;
@@ -212,7 +213,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     void startTimer() {
-        cTimer = new CountDownTimer(5000, 500) {
+        cTimer = new CountDownTimer(2000, 500) {
             public void onTick(long millisUntilFinished) {
                 int remaining_time = Math.round(millisUntilFinished / 1000) + 1;
                 TextView reload_timer = (TextView) findViewById(R.id.reload_timer);
