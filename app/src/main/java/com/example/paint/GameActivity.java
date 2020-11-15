@@ -62,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
 
         int test_level =1;
 //        if (game_start) { //happens before onClick and then doesn't occur again so never works
-        move_target(test_level, target_sizeX, target_sizeY, 8, 10);
+        //move_target(test_level, target_sizeX, target_sizeY, 8, 10);
 //        }
     }
 
@@ -71,6 +71,7 @@ public class GameActivity extends AppCompatActivity {
         int viewId = v.getId();
         if(viewId == R.id.reset){
             resetarray();
+            move_target(1, target_sizeX, target_sizeY, 8, 10);
             game_start = true;
         }
         //reset target
