@@ -19,9 +19,9 @@ public class GameActivity extends AppCompatActivity {
 
     final private ImageButton[][] buttons = new ImageButton[10][8];
     final private int[][] color= new int[10][8];
-    int target_sizeX = 4;
-    int target_sizeY = 4;
-    final int [] target = new int[target_sizeX*target_sizeY];
+    static int target_sizeX = 4;
+    static int target_sizeY = 4;
+    final static int [] target = new int[target_sizeX*target_sizeY];
     int[] current_board_position;
     CountDownTimer cTimer = null;
     boolean reloading = false;
@@ -100,8 +100,8 @@ public class GameActivity extends AppCompatActivity {
             if(target_hit){ // update the target board
                 int y_co =  Integer.parseInt(split_digits[0]) - current_board_position[0];
                 int x_co =  Integer.parseInt(split_digits[1]) - current_board_position[1];
-                target[((y_co*target_sizeY) + x_co)] = 2;
-//                target[y_co][x_co] = 2; //fill in colour variable when we have one
+                MainActivity.appUtil.throwPaintCommand(x_co, y_co);
+                target[((y_co*target_sizeY) + x_co)] = MainActivity.color;
             }
 
         }

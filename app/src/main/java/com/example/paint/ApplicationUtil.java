@@ -62,11 +62,13 @@ public class ApplicationUtil extends Application {
     }
 
     public int throwPaintCommand(int x, int y) {
+        System.out.println("In throw paint with" + x + y );
         try {
             dos.writeInt(5);
             dos.writeInt(x);
             dos.writeInt(y);
             dos.flush();
+            System.out.println("throw paint worked");
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
