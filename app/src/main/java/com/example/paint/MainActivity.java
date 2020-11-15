@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
     private DataOutputStream dos = null;
     private DataInputStream dis = null;
     static ApplicationUtil appUtil =  null;//(ApplicationUtil) this.getApplication();
+    static int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

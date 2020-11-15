@@ -17,12 +17,15 @@ import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
 
-    private ImageButton[] buttons = new ImageButton[100];
-    private int[] color= new int[100];
+    final private ImageButton[][] buttons = new ImageButton[10][8];
+    final private int[][] color= new int[10][8];
+    static int target_sizeX = 4;
+    static int target_sizeY = 4;
+    final static int [] target = new int[target_sizeX*target_sizeY];
+    int[] current_board_position;
     CountDownTimer cTimer = null;
     boolean reloading = false;
     boolean game_start = false;
-    int[] current_board_position;
     int x_direction = 1; //1 = right, 0 = left
     int y_direction = 1; //1 = down, 0 = up
 
@@ -31,24 +34,26 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        //fill button array with buttons relating to those on the XML screen
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 String buttonID = "imgBtn_" + i + j;
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-                buttons[10*i+j] = (ImageButton)findViewById(resID);
+                buttons[i][j] = (ImageButton)findViewById(resID);
             }
         }
-        //every T seconds, update the board
-        int[] start = new int[2];
-        int[] board = new int[16];
-        start [0] = 1;
-        start [1] = 1;
-        current_board_position = start; // initialize the current board  position
-        for (int i=0;i<16;i++){
-            board[i] = 0;
+        //initialize the target array
+        for (int i = 0; i < target.length; i++) {
+            target[i] = 0;
         }
 
-        update_board(start,board);
+        //every T seconds, update the board
+        int[] start = new int[2];
+        start [0] = 1; //y
+        start [1] = 2; //x
+        current_board_position = start; // initialize the current board  position
+
+        update_board(start);
         Button reset;
         reset=(Button) findViewById(R.id.reset);
         reset.setOnClickListener(this::onClick);
@@ -56,8 +61,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         int test_level =1;
-//        if (game_start) {
-        move_board (start, test_level, 4, 3, 8, 10, board);
+//        if (game_start) { //happens before onClick and then doesn't occur again so never works
+        //move_target(test_level, target_sizeX, target_sizeY, 8, 10);
 //        }
     }
 
@@ -66,50 +71,77 @@ public class GameActivity extends AppCompatActivity {
         int viewId = v.getId();
         if(viewId == R.id.reset){
             resetarray();
+            move_target(1, target_sizeX, target_sizeY, 8, 10);
             game_start = true;
+        }
+        //reset target
+        for(int i=0;i<target.length;i++){
+            target[i] = 0;
         }
     }
 
     public void onClickGOO(View v) {
         int viewId = v.getId();
-       // if(viewId == R.id.imgBtn_70||viewId == R.id.imgBtn_71||viewId == R.id.imgBtn_72||viewId == R.id.imgBtn_73) {
         if(!reloading) {
-            ImageButton btn = (ImageButton) findViewById(viewId);
-            btn.setImageResource(R.drawable.splash1black);
 
-            //create timer
+            //create timer and update "Fire" message
             reloading = true;
             TextView reloading_fire = (TextView) findViewById(R.id.reloading_fire);
             reloading_fire.setText("Reloading");
             startTimer();
+
+            //set the board int to the players colour
+            String btn_id = v.getResources().getResourceName(v.getId()); //sample of ID "com.example.paint:id/imgBtn_53"
+            String [] split_ID = btn_id.split("_");
+            String [] split_digits = split_ID[1].split("(?!^)");
+            color[Integer.parseInt(split_digits[0])][Integer.parseInt(split_digits[1])] = 2;
+
+            boolean target_hit = hit_target(Integer.parseInt(split_digits[0]), Integer.parseInt(split_digits[1]));
+            if(target_hit){ // update the target board
+                int y_co =  Integer.parseInt(split_digits[0]) - current_board_position[0];
+                int x_co =  Integer.parseInt(split_digits[1]) - current_board_position[1];
+                MainActivity.appUtil.throwPaintCommand(x_co, y_co);
+                target[((y_co*target_sizeY) + x_co)] = MainActivity.color;
+//                target[y_co][x_co] = 2; //fill in colour variable when we have one
+            }
+
         }
         else{
             //wait (maybe make the timer flash or something)
         }
-
-
-
     }
 
-    void move_board (int [] start, int level, int board_sizeX, int board_sizeY, int screen_sizeX, int screen_sizeY, int[] board) {
+    boolean hit_target(int y,int  x){
+        boolean hit = true;
+            if(!(y >= current_board_position[0] && y < (current_board_position[0] + target_sizeY))){
+                hit = false;
+            }
+            else if(!(x >= current_board_position[1] && x < (current_board_position[1] + target_sizeX))){
+                hit = false;
+            }
+        return hit;
+    }
+
+    void move_target(int level, int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
         double speed = 0.5*level;
         Handler myHandler = new Handler();
-        int delay = level*1000;
+        int delay = (int)(speed*1000);
+
 
         myHandler.postDelayed(new Runnable() {
             public void run() {
-                determine_new_board_coordinates(board_sizeX, board_sizeY, screen_sizeX, screen_sizeY);
-                update_board(current_board_position, board);
+                determine_new_target_coordinates(target_sizeX, target_sizeY, screen_sizeX, screen_sizeY);
+                update_board(current_board_position);
                 myHandler.postDelayed(this, delay);
             }
         }, delay);
     }
 
-    void determine_new_board_coordinates(int board_sizeX, int board_sizeY, int screen_sizeX, int screen_sizeY) {
+    void determine_new_target_coordinates(int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
         int space_between;
 
         if (x_direction == 1) { //check to see if we have hit the right side of the screen
-            space_between = screen_sizeX - (current_board_position[1] + board_sizeX + 1);
+            space_between = screen_sizeX - (current_board_position[1] + target_sizeX + 1);
             if(space_between <= 0) {
                 x_direction = 0;
             }
@@ -120,7 +152,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         if (y_direction == 1){ //check to see if we have hit the bottom of the screen
-            space_between = screen_sizeY - (current_board_position[0] + board_sizeY + 1);
+            space_between = screen_sizeY - (current_board_position[0] + target_sizeY + 1);
             if(space_between <= 0) {
                 y_direction = 0;
             }
@@ -149,7 +181,7 @@ public class GameActivity extends AppCompatActivity {
     private  void resetarray(){
         for (int i=0;i<10;i++){
             for (int j=0;j<8;j++){
-                color[10 * i + j] = 1;
+                color[i][j] = 1;
                 setboardcolor(i,j);
             }
         }
@@ -157,25 +189,25 @@ public class GameActivity extends AppCompatActivity {
 
 
     private void setboardcolor(int i,int j){
-        switch(color[10*i+j]) {
+        switch(color[i][j]) {
             case 0:
-                buttons[10*i+j].setImageResource(R.drawable.white);
+                buttons[i][j].setImageResource(R.drawable.white);
                 break;
             case 1:
-                buttons[10*i+j].setImageResource(R.drawable.lightgreen);
+                buttons[i][j].setImageResource(R.drawable.lightgreen);
                 break;
             case 2:
-                buttons[10*i+j].setImageResource(R.drawable.spalsh1blue);
+                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
                 break;
         }
     }
 
-    void update_board(int [] start, int [] board) {
+    void update_board(int [] start) {
         resetarray();
         int a=0;
-        for (int i = start[0]; i < start[0]+4; i++) {
-            for (int j = start[1]; j < start[1]+4; j++) {
-                color[10 * i + j] = board[a];
+        for (int i = start[0]; i < start[0]+target_sizeY; i++) {
+            for (int j = start[1]; j < start[1]+target_sizeX; j++) {
+                color[i][j] = target[a];
                 setboardcolor(i,j);
                 a++;
             }
@@ -183,7 +215,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     void startTimer() {
-        cTimer = new CountDownTimer(5000, 500) {
+        cTimer = new CountDownTimer(2000, 500) {
             public void onTick(long millisUntilFinished) {
                 int remaining_time = Math.round(millisUntilFinished / 1000) + 1;
                 TextView reload_timer = (TextView) findViewById(R.id.reload_timer);
