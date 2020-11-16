@@ -120,7 +120,7 @@ public class GameActivity extends AppCompatActivity {
             if(target_hit){ // update the target board
                 int y_co =  Integer.parseInt(split_digits[0]) - current_board_position[0];
                 int x_co =  Integer.parseInt(split_digits[1]) - current_board_position[1];
-                if(target[((y_co*target_sizeY) + x_co)] != 0) {
+                if(target[((y_co*target_sizeY) + x_co)] == 0) {
                     MainActivity.appUtil.throwPaintCommand(x_co, y_co);
                     target[((y_co * target_sizeY) + x_co)] = MainActivity.color;
                 }
