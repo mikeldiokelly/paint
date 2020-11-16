@@ -48,6 +48,14 @@ public class ReceiveThread extends Thread {
                         System.out.println("server sends G");
                         GameActivity.game_start = true;
                         break;
+                    case 'S':
+                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
+                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
+                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
+                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
+                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
+                        GameActivity.game_start = false;
+                        break;
                 }
             }
         } catch (Exception e) {

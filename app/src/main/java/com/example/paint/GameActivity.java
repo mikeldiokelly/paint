@@ -66,10 +66,22 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         int viewId = v.getId();
-        if(viewId == R.id.reset){
-            resetarray();
-            MainActivity.appUtil.unaryCommands(4);
-            game_start = true;
+        if(!game_start) {
+            if (viewId == R.id.reset) {
+                resetarray();
+                MainActivity.appUtil.unaryCommands(4);
+                game_start = true;
+                TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
+                reset_stop_btn.setText("Stop");
+
+            }
+        }
+        else {
+            //stop the game
+            MainActivity.appUtil.unaryCommands(7);
+            game_start = false;
+            TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
+            reset_stop_btn.setText("Start");
         }
         //reset target
         for(int i=0;i<target.length;i++){
