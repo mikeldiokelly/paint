@@ -151,7 +151,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         if (y_direction == 1){ //check to see if we have hit the bottom of the screen
-            space_between = screen_sizeY - (current_board_position[0] + target_sizeY + 1);
+            space_between = screen_sizeY - (current_board_position[0] + target_sizeY);
             if(space_between <= 0) {
                 y_direction = 0;
             }
