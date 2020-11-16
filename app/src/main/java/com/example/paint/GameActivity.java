@@ -17,17 +17,17 @@ import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
 
-    final private ImageButton[][] buttons = new ImageButton[10][8];
-    final private int[][] color= new int[10][8];
+    static final private ImageButton[][] buttons = new ImageButton[10][8];
+    static final private int[][] color= new int[10][8];
     static int target_sizeX = 4;
     static int target_sizeY = 4;
     final static int [] target = new int[target_sizeX*target_sizeY];
-    int[] current_board_position;
+    static int[] current_board_position;
     CountDownTimer cTimer = null;
     boolean reloading = false;
-    boolean game_start = false;
-    int x_direction = 1; //1 = right, 0 = left
-    int y_direction = 1; //1 = down, 0 = up
+    static boolean game_start = false;
+    static int x_direction = 1; //1 = right, 0 = left
+    static int y_direction = 1; //1 = down, 0 = up
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +59,8 @@ public class GameActivity extends AppCompatActivity {
         reset.setOnClickListener(this::onClick);
         reset.setBackgroundColor(Color.parseColor("red"));
 
+        move_target(8, 10);
 
-        int test_level =1;
-//        if (game_start) { //happens before onClick and then doesn't occur again so never works
-        //move_target(test_level, target_sizeX, target_sizeY, 8, 10);
-//        }
     }
 
 
@@ -71,7 +68,7 @@ public class GameActivity extends AppCompatActivity {
         int viewId = v.getId();
         if(viewId == R.id.reset){
             resetarray();
-            move_target(1, target_sizeX, target_sizeY, 8, 10);
+            MainActivity.appUtil.unaryCommands(4);
             game_start = true;
         }
         //reset target
@@ -121,22 +118,25 @@ public class GameActivity extends AppCompatActivity {
         return hit;
     }
 
-    void move_target(int level, int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
-        double speed = 0.5*level;
+    static void move_target( int screen_sizeX, int screen_sizeY) {
+        System.out.println(" in move_target");
+        double speed = 0.5;                                     // todo: adjustable level goes here
         Handler myHandler = new Handler();
         int delay = (int)(speed*1000);
 
 
         myHandler.postDelayed(new Runnable() {
             public void run() {
-                determine_new_target_coordinates(target_sizeX, target_sizeY, screen_sizeX, screen_sizeY);
-                update_board(current_board_position);
-                myHandler.postDelayed(this, delay);
+                if (game_start) {
+                    determine_new_target_coordinates(target_sizeX, target_sizeY, screen_sizeX, screen_sizeY);
+                    update_board(current_board_position);
+                }
+                    myHandler.postDelayed(this, delay);
             }
         }, delay);
     }
 
-    void determine_new_target_coordinates(int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
+    static void determine_new_target_coordinates(int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
         int space_between;
 
         if (x_direction == 1) { //check to see if we have hit the right side of the screen
@@ -177,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private  void resetarray(){
+    private static void resetarray(){
         for (int i=0;i<10;i++){
             for (int j=0;j<8;j++){
                 color[i][j] = 1;
@@ -187,7 +187,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    private void setboardcolor(int i,int j){
+    private static void setboardcolor(int i, int j){
         switch(color[i][j]) {
             case 0:
                 buttons[i][j].setImageResource(R.drawable.white);
@@ -201,7 +201,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    void update_board(int [] start) {
+    static void update_board(int[] start) {
         resetarray();
         int a=0;
         for (int i = start[0]; i < start[0]+target_sizeY; i++) {

@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
                     Toast.makeText(getApplicationContext(), "Cannot join room", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent(this, AltergameActivity.class);
+                Intent intent = new Intent(this, GameActivity.class);
                 startActivity(intent);
             }
         }

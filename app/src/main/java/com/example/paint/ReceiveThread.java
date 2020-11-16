@@ -44,6 +44,10 @@ public class ReceiveThread extends Thread {
                         System.out.println("assigned color: " + assignedColor + " to me.");
                         MainActivity.color = assignedColor;
                         break;
+                    case 'G':
+                        System.out.println("server sends G");
+                        GameActivity.game_start = true;
+                        break;
                 }
             }
         } catch (Exception e) {
