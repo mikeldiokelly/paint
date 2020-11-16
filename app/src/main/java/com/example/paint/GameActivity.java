@@ -198,6 +198,15 @@ public class GameActivity extends AppCompatActivity {
             case 2:
                 buttons[i][j].setImageResource(R.drawable.spalsh1blue);
                 break;
+            case 3:
+                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
+                break;
+            case 4:
+                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
+                break;
+            case 5:
+                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
+                break;
         }
     }
 
