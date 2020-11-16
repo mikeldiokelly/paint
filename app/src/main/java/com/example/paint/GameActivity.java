@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
 
-    static final private ImageButton[][] buttons = new ImageButton[10][8];
+    static final ImageButton[][] buttons = new ImageButton[10][8];
     static final private int[][] color= new int[10][8];
     static int target_sizeX = 4;
     static int target_sizeY = 4;
@@ -59,6 +59,10 @@ public class GameActivity extends AppCompatActivity {
         reset.setOnClickListener(this::onClick);
         reset.setBackgroundColor(Color.parseColor("red"));
 
+        Button actualReset;
+        actualReset=(Button) findViewById(R.id.actualReset);
+        actualReset.setOnClickListener(this::onClickReset);
+
         move_target(8, 10);
 
     }
@@ -72,7 +76,7 @@ public class GameActivity extends AppCompatActivity {
                 MainActivity.appUtil.unaryCommands(4);
                 game_start = true;
                 TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
-                reset_stop_btn.setText("Stop");
+                reset_stop_btn.setText("STOP");
 
             }
         }
@@ -81,10 +85,17 @@ public class GameActivity extends AppCompatActivity {
             MainActivity.appUtil.unaryCommands(7);
             game_start = false;
             TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
-            reset_stop_btn.setText("Start");
+            reset_stop_btn.setText("START");
         }
         //reset target
         for(int i=0;i<target.length;i++){
+            target[i] = 0;
+        }
+    }
+
+    public void onClickReset(View v) {
+        MainActivity.appUtil.unaryCommands(8);
+        for(int i=0;    i<target.length;i++){
             target[i] = 0;
         }
     }
@@ -103,7 +114,7 @@ public class GameActivity extends AppCompatActivity {
             String btn_id = v.getResources().getResourceName(v.getId()); //sample of ID "com.example.paint:id/imgBtn_53"
             String [] split_ID = btn_id.split("_");
             String [] split_digits = split_ID[1].split("(?!^)");
-            color[Integer.parseInt(split_digits[0])][Integer.parseInt(split_digits[1])] = 2;
+            color[Integer.parseInt(split_digits[0])][Integer.parseInt(split_digits[1])] = MainActivity.color;
 
             boolean target_hit = hit_target(Integer.parseInt(split_digits[0]), Integer.parseInt(split_digits[1]));
             if(target_hit){ // update the target board
@@ -130,7 +141,7 @@ public class GameActivity extends AppCompatActivity {
         return hit;
     }
 
-    static void move_target( int screen_sizeX, int screen_sizeY) {
+    void move_target(int screen_sizeX, int screen_sizeY) {
         System.out.println(" in move_target");
         Handler myHandler = new Handler();
         final int[] delay = {1500};
@@ -139,9 +150,14 @@ public class GameActivity extends AppCompatActivity {
 
         myHandler.postDelayed(new Runnable() {
             public void run() {
-                if (game_start) {
+                if (game_start) {TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
+                    reset_stop_btn.setText("STOP");
                     determine_new_target_coordinates(target_sizeX, target_sizeY, screen_sizeX, screen_sizeY);
                     update_board(current_board_position);
+                }
+                else{
+                    TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
+                    reset_stop_btn.setText("START");
                 }
                 if(count[0] == 2 && delay[0] >550){
                     delay[0] = delay[0] -150;

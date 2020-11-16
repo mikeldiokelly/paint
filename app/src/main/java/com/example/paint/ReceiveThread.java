@@ -36,7 +36,7 @@ public class ReceiveThread extends Thread {
                         int y_co = parseInt(values_in_message[1]);
                         int color = parseInt(values_in_message[2]);
                         System.out.println(x_co + " " + y_co + " " + color);
-                        GameActivity.target[((y_co*GameActivity.target_sizeY) + x_co)] = color;
+                        GameActivity.target[((y_co * GameActivity.target_sizeY) + x_co)] = color;
                         break;
                     case 'C':
                         //assign color
@@ -50,11 +50,14 @@ public class ReceiveThread extends Thread {
                         break;
                     case 'S':
                         System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
-                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
-                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
-                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
-                        System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
                         GameActivity.game_start = false;
+                        break;
+                    case 'R':
+                        System.out.println("server sends reset!!");
+                        for (int i = 0; i < GameActivity.target.length; i++) {
+                            GameActivity.target[i] = 0;
+                        }
+                        System.out.println(GameActivity.target);
                         break;
                 }
             }

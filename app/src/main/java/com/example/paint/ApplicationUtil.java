@@ -67,6 +67,7 @@ public class ApplicationUtil extends Application {
             dos.writeInt(5);
             dos.writeInt(x);
             dos.writeInt(y);
+            dos.writeInt(MainActivity.color);
             dos.flush();
             System.out.println("throw paint worked");
         } catch (Exception e) {
