@@ -120,9 +120,9 @@ public class GameActivity extends AppCompatActivity {
 
     static void move_target( int screen_sizeX, int screen_sizeY) {
         System.out.println(" in move_target");
-        double speed = 0.5;                                     // todo: adjustable level goes here
         Handler myHandler = new Handler();
-        int delay = (int)(speed*1000);
+        final int[] delay = {1500};
+        final int[] count = {0};
 
 
         myHandler.postDelayed(new Runnable() {
@@ -131,9 +131,14 @@ public class GameActivity extends AppCompatActivity {
                     determine_new_target_coordinates(target_sizeX, target_sizeY, screen_sizeX, screen_sizeY);
                     update_board(current_board_position);
                 }
-                    myHandler.postDelayed(this, delay);
+                if(count[0] == 2 && delay[0] >550){
+                    delay[0] = delay[0] -150;
+                    count[0] =0;
+                }
+                count[0]++;
+                    myHandler.postDelayed(this, delay[0]);
             }
-        }, delay);
+        }, delay[0]);
     }
 
     static void determine_new_target_coordinates(int target_sizeX, int target_sizeY, int screen_sizeX, int screen_sizeY) {
@@ -199,13 +204,13 @@ public class GameActivity extends AppCompatActivity {
                 buttons[i][j].setImageResource(R.drawable.spalsh1blue);
                 break;
             case 3:
-                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
+                buttons[i][j].setImageResource(R.drawable.splash1black);
                 break;
             case 4:
-                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
+                buttons[i][j].setImageResource(R.drawable.splash3green);
                 break;
             case 5:
-                buttons[i][j].setImageResource(R.drawable.spalsh1blue);
+                buttons[i][j].setImageResource(R.drawable.splash1yellow);
                 break;
         }
     }
