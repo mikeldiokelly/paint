@@ -3,6 +3,8 @@ package com.example.paint;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+
+import static com.example.paint.GameActivity.target;
 import static java.lang.Integer.parseInt;
 
 public class ReceiveThread extends Thread {
@@ -35,7 +37,7 @@ public class ReceiveThread extends Thread {
                         int y_co = parseInt(values_in_message[1]);
                         int color = parseInt(values_in_message[2]);
                         System.out.println(x_co + " " + y_co + " " + color);
-                        GameActivity.target[((y_co * GameActivity.target_sizeY) + x_co)] = color;
+                        target[((y_co * GameActivity.target_sizeY) + x_co)] = color;
                         break;
                     case 'C':
                         //assign color
@@ -46,6 +48,10 @@ public class ReceiveThread extends Thread {
                     case 'G':
                         System.out.println("server sends G");
                         GameActivity.game_start = true;
+                        for (int i = 0; i < target.length; i++) {
+                            target[i] = 0;
+                        }
+
                         break;
                     case 'S':
                         System.out.println("server sends S !!!!!!!!!!!!!!!!!!!!!!!");
@@ -53,10 +59,10 @@ public class ReceiveThread extends Thread {
                         break;
                     case 'R':
                         System.out.println("server sends reset!!");
-                        for (int i = 0; i < GameActivity.target.length; i++) {
-                            GameActivity.target[i] = 0;
+                        for (int i = 0; i < target.length; i++) {
+                            target[i] = 0;
                         }
-                        System.out.println(GameActivity.target);
+                        System.out.println(target);
                         break;
                 }
             }

@@ -56,10 +56,6 @@ public class GameActivity extends AppCompatActivity {
         reset.setOnClickListener(this::onClick);
         reset.setBackgroundColor(Color.parseColor("red"));
 
-        Button actualReset;
-        actualReset = (Button) findViewById(R.id.actualReset);
-        actualReset.setOnClickListener(this::onClickReset);
-
         move_target(8, 10);
 
     }
@@ -89,9 +85,10 @@ public class GameActivity extends AppCompatActivity {
             reset_stop_btn.setText("START");
         }
         //reset target
-        for (int i = 0; i < target.length; i++) {
-            target[i] = 0;
-        }
+        if(!game_start)
+            for (int i = 0; i < target.length; i++) {
+                target[i] = 0;
+            }
     }
 
     public void onClickReset(View v) {
@@ -159,6 +156,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     TextView reset_stop_btn = (TextView) findViewById(R.id.reset);
                     reset_stop_btn.setText("START");
+                    for (int i = 0; i < 10; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            String buttonID = "imgBtn_" + i + j;
+                            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+                            buttons[i][j] = (ImageButton) findViewById(resID);
+                        }
+                    }
+                    //initialize the target array
+                    for (int i = 0; i < target.length; i++) {
+                        target[i] = 0;
+                    }
                 }
                 if (count[0] == 2 && delay[0] > 550) {
                     delay[0] = delay[0] - 150;

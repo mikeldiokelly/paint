@@ -788,16 +788,6 @@
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/actualReset"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"
-            android:onClick="onClick"
-            android:text="RESET"
-            android:textSize="30sp" />
     </RelativeLayout>
 
 
