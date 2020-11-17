@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Paint">
-        <activity android:name=".AltergameActivity"/>
         <activity android:name=".GameActivity" />
         <activity android:name=".LoadActivity" />
         <activity android:name=".MainActivity">

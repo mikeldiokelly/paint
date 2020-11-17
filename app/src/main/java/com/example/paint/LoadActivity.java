@@ -1,21 +1,16 @@
 package com.example.paint;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.Socket;
 
 public class LoadActivity extends AppCompatActivity {
-    private Socket socket;
     private DataOutputStream dos = null;
     private DataInputStream dis = null;
     ApplicationUtil appUtil =  (ApplicationUtil) this.getApplication();
@@ -74,26 +69,18 @@ public class LoadActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-
-
     }
 
 
     public void onClickGo(View view) {
         int viewId = view.getId();
         if(viewId == R.id.btnGo){
-            //todo: send {room Size, gameLevel} to the server
-            //      get user Id(?) & roomId
-            //      Server should:
-            //          1. initialize User ID
-            //          2. Initialize room
-            //          3. Set host
 
             try {
                 dos = appUtil.getDos();
                 dis = appUtil.getDis();
                 dos.writeUTF("command=");
-                dos.writeInt(Command.START);
+                dos.writeInt(4);
                 dos.writeUTF("Room Size=");
                 dos.writeInt(roomSize);
                 dos.writeUTF("Game Level=");
@@ -104,11 +91,9 @@ public class LoadActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            //todo: handle received message
 
             Intent intent = new Intent(this, GameActivity.class);
             Bundle b=new Bundle();
-            //b.putString("name","sth");
             b.putInt("roomSize",roomSize);
             b.putInt("gameLevel",gameLevel);
             intent.putExtras(b);

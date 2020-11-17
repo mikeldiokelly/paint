@@ -3,7 +3,6 @@ package com.example.paint;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-
 import static java.lang.Integer.parseInt;
 
 public class ReceiveThread extends Thread {

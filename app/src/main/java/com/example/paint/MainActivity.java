@@ -14,11 +14,11 @@ import java.net.Socket;
 
 
 public class MainActivity extends Activity {
-    private Socket socket;
     private DataOutputStream dos = null;
     private DataInputStream dis = null;
-    static ApplicationUtil appUtil =  null;//(ApplicationUtil) this.getApplication();
+    static ApplicationUtil appUtil =  null;
     static int color;
+    static boolean isClientHost = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +33,14 @@ public class MainActivity extends Activity {
         appUtil =  (ApplicationUtil) this.getApplication();
         try {
             appUtil.init();
-//            socket = appUtil.getSocket();
-//            dos = appUtil.getDos();
-//            dis = appUtil.getDis();
-//            appUtil.setMsg(Command.LOGIN);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // todo: start receiving thread
     }
 
-    private int firstContactLogin() throws InterruptedException {
+    private int firstContactLogin(){
         EditText text = (EditText)findViewById(R.id.editText);
         String username = text.getText().toString();
         int statusCode = appUtil.sendNewNameCommand(username);
@@ -59,8 +54,6 @@ public class MainActivity extends Activity {
     public void onClickJoinRoom(View v) throws InterruptedException {
         int viewId = v.getId();
         if(viewId == R.id.btnJoin){
-            if(joinRoom()){
-
                 if(firstContactLogin() != 0 ) {
                     return;
                 }
@@ -73,19 +66,8 @@ public class MainActivity extends Activity {
                 }
                 Intent intent = new Intent(this, GameActivity.class);
                 startActivity(intent);
-            }
         }
     }
-
-    private void findRoom() {
-        // todo:
-    }
-
-    private boolean joinRoom() {
-        // todo:
-        return true;
-    }
-
 
     public void onClickCreateRoom(View v) throws InterruptedException {
         int viewId = v.getId();
@@ -105,9 +87,9 @@ public class MainActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Cannot create room", Toast.LENGTH_SHORT).show();
             return;
         }
+        isClientHost = true;
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
-
 
 }
